@@ -1,33 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useRef } from 'react';
+import { useOnClickOutside } from './hooks/hooks';
+import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './global';
+import { theme } from './theme';
 
-// import {Button} from '@material-ui/core';
-import Axios from 'axios';
-import Bokeh from 'bokehjs';
+import { Burger, Menu } from './components';
 
+import {handlePlot1, handlePlot2} from './PlotGetter';
 
-function handlePlot1 () {
-  Axios.get("http://localhost:5000/plot1").then(resp => Bokeh.embed.embed_item(resp.data, 'testPlot'))
-}
-
-function handlePlot2 () {
-  Axios.get("http://localhost:5000/plot2").then(resp => window.testPlot2 = Bokeh.embed.embed_item(resp.data, 'testPlot'))
+function Plots() {
+    return (
+        <div>
+            <button variant="contained" style={{margin: 10}} color="primary" onClick={handlePlot1}>
+                Get Plot 1
+            </button>
+            <button variant="contained" style={{margin: 10}} color="primary" onClick={handlePlot2}>
+                Get Plot 2
+            </button>
+            <div id='testPlot' className="bk-root"></div>
+        </div>
+    );
 }
 
 function App() {
-  return (
-    <div className="App" style={{margin: 20}}>
-      Hello World
-      <button variant="contained" style={{margin: 10}} color="primary" onClick={handlePlot1}>
-        Get Plot 1
-      </button>
-      <button variant="contained" style={{margin: 10}} color="primary" onClick={handlePlot2}>
-        Get Plot 2
-      </button>
-      <div id='testPlot' className="bk-root"></div>
-    </div>
-  );
-}
+    const [open, setOpen] = useState(false);
+    const node = useRef();
+    useOnClickOutside(node, () => setOpen(false));
 
+    return (
+        <ThemeProvider theme={theme}>
+            <>
+                <GlobalStyles />
+                <div ref={node}>
+                    <Burger open={open} setOpen={setOpen} />
+                    <Menu open={open} setOpen={setOpen} />
+                </div>
+                <div>
+                    <h1>Hello. This is Health Kit Data Explorer</h1>
+                    <Plots/>
+                </div>
+            </>
+        </ThemeProvider>
+    );
+}
 export default App;
