@@ -5,7 +5,6 @@ import { GlobalStyles } from './global';
 import { theme } from './theme';
 
 import { Burger, Menu } from './components';
-
 import {handlePlot1, handlePlot2} from './PlotGetter';
 
 function Plots() {
