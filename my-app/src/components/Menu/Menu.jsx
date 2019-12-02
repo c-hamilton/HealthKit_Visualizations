@@ -1,20 +1,30 @@
 import React from 'react';
-import { bool } from 'prop-types';
+import {bool, func, string} from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 
-const Menu = ({ open }) => {
+function menuItemClicked(setOpen, setPage, previousPage, pageName) {
+    if (previousPage !== pageName) {
+        console.log("changing the page state");
+        setPage(pageName);
+    }
+    setOpen(false);
+}
+
+// TODO clean this up with JSX for less redundancy
+// TODO make these links change the page(👍) OR change to buttons(👎)
+const Menu = ({ open, setOpen, page, setPage }) => {
     return (
         <StyledMenu open={open}>
-            <a href="/">
-                <span role="img" aria-label="about us">&#x1F4AA;</span>
+            <a href="#activity" onClick={() => {menuItemClicked(setOpen, setPage, page, "Activity")}}>
+                <span role="img" aria-label="activity">&#x1F4AA;</span>
                 Activity
             </a>
-            <a href="/">
-                <span role="img" aria-label="price">&#x1F49C;</span>
+            <a href="#heart" onClick={() => {menuItemClicked(setOpen, setPage, page, "Heart")}}>
+                <span role="img" aria-label="heart">&#x1F49C;</span>
                 Heart
             </a>
-            <a href="/">
-                <span role="img" aria-label="contact">&#x1F4CA;</span>
+            <a href="#explore" onClick={() => {menuItemClicked(setOpen, setPage, page, "Explore")}}>
+                <span role="img" aria-label="explore">&#x1F4CA;</span>
                 Explore
             </a>
         </StyledMenu>
@@ -23,6 +33,9 @@ const Menu = ({ open }) => {
 
 Menu.propTypes = {
     open: bool.isRequired,
+    setOpen: func.isRequired,
+    page: string.isRequired,
+    setPage: func.isRequired,
 };
 
 export default Menu;

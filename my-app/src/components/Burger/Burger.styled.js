@@ -1,4 +1,4 @@
-// Burger.styled.js
+// Activity.styled.js
 import styled from 'styled-components';
 export const StyledBurger = styled.button`
   position: absolute;

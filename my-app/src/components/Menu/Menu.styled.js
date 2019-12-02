@@ -18,7 +18,7 @@ export const StyledMenu = styled.nav`
     width: 100%;
   }
 
-  a {
+  a, button {
     font-size: 2rem;
     text-transform: uppercase;
     padding: 2rem 0;

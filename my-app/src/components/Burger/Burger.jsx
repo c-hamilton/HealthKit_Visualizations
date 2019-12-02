@@ -10,7 +10,8 @@ const Burger = ({ open, setOpen }) => {
             <div />
         </StyledBurger>
     )
-}
+};
+
 Burger.propTypes = {
     open: bool.isRequired,
     setOpen: func.isRequired,
