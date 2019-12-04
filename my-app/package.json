@@ -2,6 +2,11 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "comments": {
+    "scripts": {
+      "develop": "single & runs parallely, double runs concurrently"
+    }
+  },
   "dependencies": {
     "axios": "^0.19.0",
     "prop-types": "^15.7.2",
@@ -11,6 +16,10 @@
     "styled-components": "^4.4.1"
   },
   "scripts": {
+    "develop": "FLASK_APP=flask_app.py FLASK_ENV=development flask run & react-scripts start",
+    "serve": "FLASK_APP=flask_app.py FLASK_ENV=development flask run",
+    "server": "python3 flask_app.py",
+    "deploy": "echo 'finish this part silly'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
