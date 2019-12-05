@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {string} from 'prop-types';
-import { StyledActivity } from './Activity.styled';
+import {StyledActivity} from './Activity.styled';
 import Axios from "axios";
 
-function handlePlot1 () {
+function handlePlot1() {
     Axios.get("http://localhost:5000/plot1").then(resp => window.Bokeh.embed.embed_item(resp.data, 'plot1'))
 }
 

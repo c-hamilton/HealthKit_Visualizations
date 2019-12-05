@@ -1,0 +1,8 @@
+flask
+werkzeug
+flask_cors
+gevent
+boto3
+botocore
+bokeh
+pandas

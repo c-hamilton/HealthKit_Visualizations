@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { useOnClickOutside } from './hooks/hooks';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyles } from './global';
-import { theme } from './theme';
+import React, {useState, useRef, useEffect} from 'react';
+import {useOnClickOutside} from './hooks/hooks';
+import {ThemeProvider} from 'styled-components';
+import {GlobalStyles} from './global';
+import {theme} from './theme';
 
-import { Burger, Menu, Activity } from './components';
+import {Burger, Menu, Activity} from './components';
 import {handlePlot1, handlePlot2} from './PlotGetter';
 
 function Plots() {
@@ -67,9 +67,9 @@ function App() {
     return (
         <ThemeProvider theme={theme}>
             <>
-                <GlobalStyles />
+                <GlobalStyles/>
                 <div ref={node}>
-                    <Burger open={open} setOpen={setOpen} />
+                    <Burger open={open} setOpen={setOpen}/>
                     <Menu open={open} setOpen={setOpen} page={page} setPage={setPage}/>
                 </div>
                 <div>
@@ -79,4 +79,5 @@ function App() {
         </ThemeProvider>
     );
 }
+
 export default App;
